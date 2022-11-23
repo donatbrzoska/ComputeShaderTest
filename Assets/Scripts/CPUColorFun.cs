@@ -30,7 +30,7 @@ public class CPUColorFun: IColorFun
         return Texture;
     }
 
-    public Color[] Compute(int mouse_x, int mouse_y)
+    public void Compute(int mouse_x, int mouse_y)
     {
         //for (int i = 0; i < TextureWidth; i++)
         Parallel.For(0, TextureWidth, (i, state) =>
@@ -49,8 +49,6 @@ public class CPUColorFun: IColorFun
             }
         });
         Texture.Apply();
-
-        return Texture.GetPixels();
     }
 
     public Color[] Compute_Testable(int mouse_x, int mouse_y)

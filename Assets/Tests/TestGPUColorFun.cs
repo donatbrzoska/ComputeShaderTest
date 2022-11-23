@@ -27,7 +27,7 @@ public class TestGPUColorFun
         return equal;
     }
 
-    private static bool FloatsEqual(float a, float b, float precision = 0.01f)
+    private static bool FloatsEqual(float a, float b, float precision = 0.001f)
     {
         return Mathf.Abs(a - b) < precision;
     }
@@ -36,10 +36,10 @@ public class TestGPUColorFun
     public void ResultsMatch()
     {
         CPUColorFun cc = new CPUColorFun(16, 16, 4, 4);
-        Color[] cc_res = cc.Compute(2, 3);
+        Color[] cc_res = cc.Compute_Testable(2, 3);
 
         GPUColorFun gc = new GPUColorFun(16, 16, 4, 4);
-        Color[] gc_res = gc.Compute(2, 3);
+        Color[] gc_res = gc.Compute_Testable(2, 3);
 
         //string res = "";
         //for (int i = 0; i < cc_res.Length; i++)

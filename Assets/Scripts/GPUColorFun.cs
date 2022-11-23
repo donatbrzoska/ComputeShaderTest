@@ -7,7 +7,7 @@ struct MousePosition
     public int y;
 }
 
-public class GPUColorFun : IColorFun
+public class GPUColorFun: IColorFun
 {
     private const int N_ThreadGroups = 8; // this has to match numthreads in the ComputeShader
 
@@ -42,32 +42,24 @@ public class GPUColorFun : IColorFun
     {
         return RenderTexture;
     }
-
-    public Color[] Compute(int mouse_x, int mouse_y)
+    
+    public void Compute(int mouse_x, int mouse_y)
     {
         // use array just for trying out ComputeBuffers
         MousePosition[] data = new MousePosition[1] {
             new MousePosition() { x = mouse_x, y = mouse_y }
         };
 
-        ComputeBuffer cb_mouse = new ComputeBuffer(1, sizeof(int) + sizeof(int));
-        cb_mouse.SetData(data);
+        ComputeBuffer cb = new ComputeBuffer(1, sizeof(int) + sizeof(int));
+        cb.SetData(data);
 
-        ComputeBuffer cb_texture = new ComputeBuffer(TextureHeight * TextureWidth * 4, sizeof(int) + sizeof(int));
-        Color[] colors = new Color[TextureWidth * TextureHeight];
-        cb_texture.SetData(colors);
-
-        ComputeShader.SetBuffer(0, "mouse_position", cb_mouse);
-        ComputeShader.SetBuffer(0, "texture_data", cb_texture);
+        ComputeShader.SetBuffer(0, "mouse_position", cb);
         ComputeShader.Dispatch(0, RenderTexture.width / 1, RenderTexture.height / 1, 1);
 
-        // OPTION
-        cb_texture.GetData(colors);
+        //// OPTION
+        //cb.GetData(data);
 
-        cb_mouse.Dispose();
-        cb_texture.Dispose();
-
-        return colors;
+        cb.Dispose();
     }
 
     public Color[] Compute_Testable(int mouse_x, int mouse_y)
