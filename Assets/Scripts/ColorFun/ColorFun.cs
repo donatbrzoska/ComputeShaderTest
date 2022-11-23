@@ -34,6 +34,7 @@ public class ColorFun : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
+            // NOTE: measure GPU render time through FPS
             Stopwatch sw = new Stopwatch();
             sw.Start();
 

@@ -26,16 +26,8 @@ public class IncreaseDecreaseColor : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            //Stopwatch sw = new Stopwatch();
-            //sw.Start();
-
+            // NOTE: measure render time through FPS
             GpuIncreaseColor.Increase();
-
-            //double ms = 1000 * (double)sw.ElapsedTicks / Stopwatch.Frequency;
-            ////double us = 1000000.0 * (double)sw.ElapsedTicks / Stopwatch.Frequency;
-            ////double ns = 1000000000.0 * (double)sw.ElapsedTicks / Stopwatch.Frequency;
-            ////UnityEngine.Debug.Log(ns + "ns");
-            //UnityEngine.Debug.Log(ms + "ms");
         }
         if (Input.GetKey(KeyCode.S))
         {
