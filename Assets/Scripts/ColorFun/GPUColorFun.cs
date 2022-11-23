@@ -54,7 +54,7 @@ public class GPUColorFun: IColorFun
         cb.SetData(data);
 
         ComputeShader.SetBuffer(0, "mouse_position", cb);
-        ComputeShader.Dispatch(0, RenderTexture.width / 1, RenderTexture.height / 1, 1);
+        ComputeShader.Dispatch(0, RenderTexture.width / N_ThreadGroups, RenderTexture.height, 1);
 
         //// OPTION
         //cb.GetData(data);
