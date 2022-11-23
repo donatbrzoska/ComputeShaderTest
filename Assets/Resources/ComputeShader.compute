@@ -1,0 +1,55 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel main
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Result;
+
+uint screen_width;
+uint screen_height;
+
+uint canvas_width;
+uint canvas_height;
+
+struct MousePosition
+{
+    uint x;
+    uint y;
+};
+
+RWStructuredBuffer<MousePosition> mouse_position;
+
+[numthreads(1,1,1)]
+void main (uint3 id : SV_DispatchThreadID)
+{
+/*
+    half mouse_comp_x = (half)mouse_position[0].x / screen_width;
+    half mouse_comp_y = (half)mouse_position[0].y / screen_height;
+
+    half plane_comp_x = (half)id.x / canvas_width;
+    half plane_comp_y = (half)id.y / canvas_height;
+
+    half r = (mouse_comp_x + plane_comp_x) / 2;
+    half g = (mouse_comp_y + plane_comp_y) / 2;
+    half b = 1 - g;
+
+    // having more operations per pixel shows the benefit of gpu acceleration
+    // Result[id.xy] = float4(r*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b, g*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b, b*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g, 1);
+    Result[id.xy] = float4(r, g, b, 1);
+*/
+
+    float mouse_comp_x = (float)mouse_position[0].x / screen_width;
+    float mouse_comp_y = (float)mouse_position[0].y / screen_height;
+
+    float plane_comp_x = (float)id.x / canvas_width;
+    float plane_comp_y = (float)id.y / canvas_height;
+
+    float r = (mouse_comp_x + plane_comp_x) / 2;
+    float g = (mouse_comp_y + plane_comp_y) / 2;
+    float b = 1 - g;
+
+    // having more operations per pixel shows the benefit of gpu acceleration
+    // Result[id.xy] = float4(r*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b, g*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b, b*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g, 1);
+    Result[id.xy] = float4(r, g, b, 1);
+
+}
