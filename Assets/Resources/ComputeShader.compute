@@ -49,7 +49,17 @@ void main (uint3 id : SV_DispatchThreadID)
     float b = 1 - g;
 
     // having more operations per pixel shows the benefit of gpu acceleration
-    //Result[id.xy] = float4(r * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b, g * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b, b * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g, 1);
+    // Result[id.xy] = float4(r * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b, g * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b, b * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g, 1);
+
     //Result[id.xy] = float4(r*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b, g*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b, b*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g, 1);
+
     Result[id.xy] = float4(r, g, b, 1);
+
+/*
+    if (id.x % 3 == 0) {
+        Result[id.xy] = float4(r*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b*r*r*r*r/g/b/g/b, g*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b*g*g*g*g/r/b/r/b, b*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g*b*b*b*b/r/g/r/g, 1);
+    } else {
+        Result[id.xy] = float4(r, g, b, 1);
+    }
+*/
 }

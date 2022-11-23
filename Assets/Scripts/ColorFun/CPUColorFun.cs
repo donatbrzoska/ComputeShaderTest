@@ -45,8 +45,15 @@ public class CPUColorFun: IColorFun
                 float g = (mouse_comp_y + plane_comp_y) / 2;
                 float b = 1 - g;
                 //SetPixelFast(i, j, new Color(r * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b, g * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b, b * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g));
+
                 //SetPixelFast(i, j, new Color(r * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b, g * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b, b * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g));
+
                 SetPixelFast(i, j, new Color(r, g, b));
+
+                //if (i % 3 == 0)
+                //    SetPixelFast(i, j, new Color(r * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b * r * r * r * r / g / b / g / b, g * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b * g * g * g * g / r / b / r / b, b * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g * b * b * b * b / r / g / r / g));
+                //else
+                //    SetPixelFast(i, j, new Color(r, g, b));
             }
         });
         Texture.Apply();
