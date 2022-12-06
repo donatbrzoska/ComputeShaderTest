@@ -8,9 +8,6 @@ public class GPUIncreaseDecreaseColor
     private ComputeShader IncreaseShader2;
     private ComputeShader DecreaseShader;
     private ComputeShader DecreaseShader2;
-    private RenderTexture RenderTexture_r;
-    private RenderTexture RenderTexture_g;
-    private RenderTexture RenderTexture_b;
     private RenderTexture RenderTexture;
 
     private ComputeBuffer GPUBuffer;
@@ -31,21 +28,6 @@ public class GPUIncreaseDecreaseColor
         RenderTexture.filterMode = FilterMode.Point;
         RenderTexture.enableRandomWrite = true;
         RenderTexture.Create();
-
-        RenderTexture_r = new RenderTexture(TextureWidth, TextureHeight, 1, RenderTextureFormat.RFloat);
-        RenderTexture_r.filterMode = FilterMode.Point;
-        RenderTexture_r.enableRandomWrite = true;
-        RenderTexture_r.Create();
-
-        RenderTexture_g = new RenderTexture(TextureWidth, TextureHeight, 1, RenderTextureFormat.RFloat);
-        RenderTexture_g.filterMode = FilterMode.Point;
-        RenderTexture_g.enableRandomWrite = true;
-        RenderTexture_g.Create();
-
-        RenderTexture_b = new RenderTexture(TextureWidth, TextureHeight, 1, RenderTextureFormat.RFloat);
-        RenderTexture_b.filterMode = FilterMode.Point;
-        RenderTexture_b.enableRandomWrite = true;
-        RenderTexture_b.Create();
 
 
         GPUBuffer = new ComputeBuffer(TextureWidth * TextureHeight * 4, sizeof(float));
@@ -73,9 +55,6 @@ public class GPUIncreaseDecreaseColor
 
         IncreaseShader = (ComputeShader)Resources.Load("IncreaseShader");
         IncreaseShader.SetBuffer(0, "DebugValue", DebugBuffer);
-        IncreaseShader.SetTexture(0, "r", RenderTexture_r);
-        IncreaseShader.SetTexture(0, "g", RenderTexture_g);
-        IncreaseShader.SetTexture(0, "b", RenderTexture_b);
         IncreaseShader.SetTexture(0, "Result", RenderTexture);
         IncreaseShader.SetInt("canvas_width", TextureWidth);
         IncreaseShader.SetInt("canvas_height", TextureHeight);

@@ -1,10 +1,6 @@
 // Each #kernel tells which function to compile; you can have many kernels
 #pragma kernel CSMain
 
-RWTexture2D<float> r;
-RWTexture2D<float> g;
-RWTexture2D<float> b;
-
 RWTexture2D<float4> Result;
 
 uint canvas_width;
@@ -16,22 +12,12 @@ RWStructuredBuffer<int> DebugValue;
 [numthreads(8,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
-    // float4 source = Colors[id.y * canvas_width + id.x];
-    // float d = 0.0025;
-    // float r = source.x + d;
-    // float g = source.y + d;
-    // float b = source.z + d;
-    // float4 new_col = float4(r, g, b, 1);
-    // Colors[id.y * canvas_width + id.x] = new_col;
-    // Result[id.xy] = new_col;
-
-    float r_ = r[id.xy] + 0.0025;
-    float g_ = g[id.xy] + 0.0025;
-    float b_ = b[id.xy] + 0.0025;
-
-    r[id.xy] = r_;
-    g[id.xy] = g_;
-    b[id.xy] = b_;
-
-    Result[id.xy] = float4(r_, g_, b_, 1);
+    float4 source = Colors[id.y * canvas_width + id.x];
+    float d = 0.0025;
+    float r = source.x + d;
+    float g = source.y + d;
+    float b = source.z + d;
+    float4 new_col = float4(r, g, b, 1);
+    Colors[id.y * canvas_width + id.x] = new_col;
+    Result[id.xy] = new_col;
 }
