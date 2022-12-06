@@ -30,12 +30,14 @@ public class GPUColorFun: IColorFun
         RenderTexture.enableRandomWrite = true;
         RenderTexture.Create();
 
-        ComputeShader = (ComputeShader)Resources.Load("ComputeShader");
+        ComputeShader = (ComputeShader)Resources.Load("ColorFunShader");
+        // ComputeShader = (ComputeShader)Resources.Load("ColorFunShader2");
         ComputeShader.SetTexture(0, "Result", RenderTexture);
         ComputeShader.SetInt("screen_width", ScreenWidth);
         ComputeShader.SetInt("screen_height", ScreenHeight);
         ComputeShader.SetInt("canvas_width", TextureWidth);
         ComputeShader.SetInt("canvas_height", TextureHeight);
+
     }
 
     public Texture GetTexture()
@@ -52,8 +54,11 @@ public class GPUColorFun: IColorFun
 
         ComputeBuffer cb = new ComputeBuffer(1, sizeof(int) + sizeof(int));
         cb.SetData(data);
-
         ComputeShader.SetBuffer(0, "mouse_position", cb);
+
+        // ComputeShader.SetInt("mouse_x", mouse_x);
+        // ComputeShader.SetInt("mouse_y", mouse_y);
+
         ComputeShader.Dispatch(0, RenderTexture.width / N_ThreadGroups, RenderTexture.height, 1);
 
         //// OPTION

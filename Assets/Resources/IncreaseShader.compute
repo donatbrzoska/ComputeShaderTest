@@ -13,7 +13,7 @@ RWStructuredBuffer<int> DebugValue;
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     float4 source = Colors[id.y * canvas_width + id.x];
-    float d = 0.005;
+    float d = 0.0025;
     float r = source.x + d;
     float g = source.y + d;
     float b = source.z + d;

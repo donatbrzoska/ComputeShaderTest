@@ -415,8 +415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GPU_ENABLE: 1
-  TextureHeight: 1024
-  TextureWidth: 1024
+  TextureHeight: 4096
+  TextureWidth: 4096
 --- !u!108 &1159589200
 Light:
   m_ObjectHideFlags: 0
