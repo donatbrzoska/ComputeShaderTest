@@ -1,0 +1,18 @@
+#pragma kernel CSMain
+
+float Stepsize;
+
+RWTexture2D<float4> InputTexture;
+RWTexture2D<float4> OutputTexture;
+
+[numthreads(8,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float4 source = InputTexture[id.xy];
+    float r = source.x + Stepsize;
+    float g = source.y + Stepsize;
+    float b = source.z + Stepsize;
+    float4 new_col = float4(r, g, b, 1);
+
+    OutputTexture[id.xy] = new_col;
+}
