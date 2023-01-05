@@ -16,6 +16,11 @@ public class TestModeDropdownController : MonoBehaviour
         TestModeDropdown.AddOptions(Enum.GetNames(typeof(TestMode)).ToList());
         
         PerformanceTestEngine = GameObject.Find("Plane").GetComponent<PerformanceTestEngine>();
+
+        if (!PerformanceTestEngine.isActiveAndEnabled)
+        {
+            TestModeDropdown.transform.localScale = Vector3.zero;
+        }
     }
 
     // Start is called before the first frame update
