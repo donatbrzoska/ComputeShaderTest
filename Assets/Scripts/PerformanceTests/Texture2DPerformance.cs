@@ -35,7 +35,7 @@ public class Texture2DPerformance : MonoBehaviour
             ComputeBuffer finishedBuffer = new ComputeBuffer(1, sizeof(int));
             finishedBuffer.SetData(finishedValue);
 
-            ComputeShader cs = (ComputeShader)Resources.Load("Texture2DPerformance");
+            ComputeShader cs = (ComputeShader)Resources.Load("PerformanceTests/Texture2DPerformance");
             cs.SetTexture(0, "InputTexture", InputTexture);
             cs.SetTexture(0, "OutputTexture", OutputTexture);
             cs.SetBuffer(0, "FinishedMarker", finishedBuffer);

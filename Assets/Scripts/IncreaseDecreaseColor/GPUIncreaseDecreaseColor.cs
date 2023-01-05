@@ -53,7 +53,7 @@ public class GPUIncreaseDecreaseColor
         DebugBuffer.SetData(DebugValue);
 
 
-        IncreaseShader = (ComputeShader)Resources.Load("IncreaseShader");
+        IncreaseShader = (ComputeShader)Resources.Load("IncreaseDecreaseColor/IncreaseShader");
         IncreaseShader.SetBuffer(0, "DebugValue", DebugBuffer);
         IncreaseShader.SetTexture(0, "Result", RenderTexture);
         IncreaseShader.SetInt("canvas_width", TextureWidth);
@@ -70,7 +70,7 @@ public class GPUIncreaseDecreaseColor
         // IncreaseShader2.SetBuffer(0, "Colors_b", GPUBuffer_b);
         // IncreaseShader2.SetBuffer(0, "Colors_a", GPUBuffer_a);
 
-        DecreaseShader = (ComputeShader)Resources.Load("DecreaseShader");
+        DecreaseShader = (ComputeShader)Resources.Load("IncreaseDecreaseColor/DecreaseShader");
         DecreaseShader.SetBuffer(0, "DebugValue", DebugBuffer);
         DecreaseShader.SetTexture(0, "Result", RenderTexture);
         DecreaseShader.SetInt("canvas_width", TextureWidth);

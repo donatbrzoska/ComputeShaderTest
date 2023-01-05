@@ -30,7 +30,7 @@ public class GPUColorFun: IColorFun
         RenderTexture.enableRandomWrite = true;
         RenderTexture.Create();
 
-        ComputeShader = (ComputeShader)Resources.Load("ColorFunShader");
+        ComputeShader = (ComputeShader)Resources.Load("ColorFun/ColorFunShader");
         // ComputeShader = (ComputeShader)Resources.Load("ColorFunShader2");
         ComputeShader.SetTexture(0, "Result", RenderTexture);
         ComputeShader.SetInt("screen_width", ScreenWidth);
