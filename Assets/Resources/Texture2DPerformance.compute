@@ -1,0 +1,22 @@
+#pragma kernel CSMain
+
+uint Dimensions;
+Texture2D<float4> InputTexture;
+RWTexture2D<float4> OutputTexture;
+
+RWStructuredBuffer<int> FinishedMarker;
+
+uint XY(uint x, uint y, uint width)
+{
+    return y * width + x;
+}
+
+[numthreads(8,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    OutputTexture[id.xy] = InputTexture[id.xy] + float4(0.1, 0.1, 0.1, 0);
+
+    if (id.x == 0 && id.y == 0) {
+        FinishedMarker[0] = 1;
+    }
+}
