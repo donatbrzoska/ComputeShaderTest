@@ -4,6 +4,7 @@ public enum TestMode
 {
     Empty,
     Texture2D,
+    TripleTexture2D,
     StructuredBuffer
 }
 
@@ -42,6 +43,9 @@ public class PerformanceTestEngine : MonoBehaviour
                     break;
                 case TestMode.Texture2D:
                     Calculator = new Texture2DCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                    break;
+                case TestMode.TripleTexture2D:
+                    Calculator = new TripleTexture2DCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
                     break;
                 case TestMode.Empty:
                     break;
