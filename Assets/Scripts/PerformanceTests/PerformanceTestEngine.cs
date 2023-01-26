@@ -5,7 +5,9 @@ public enum TestMode
     Empty,
     Texture2D,
     TripleTexture2D,
-    StructuredBuffer
+    StructuredBuffer,
+    StructuredBufferNoPadding,
+    StructuredBufferWithPadding,
 }
 
 public class PerformanceTestEngine : MonoBehaviour
@@ -40,6 +42,12 @@ public class PerformanceTestEngine : MonoBehaviour
             {
                 case TestMode.StructuredBuffer:
                     Calculator = new StructuredBufferCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                    break;
+                case TestMode.StructuredBufferNoPadding:
+                    Calculator = new StructuredBufferNoPaddingCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                    break;
+                case TestMode.StructuredBufferWithPadding:
+                    Calculator = new StructuredBufferNoPaddingCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
                     break;
                 case TestMode.Texture2D:
                     Calculator = new Texture2DCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);

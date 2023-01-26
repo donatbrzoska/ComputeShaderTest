@@ -20,7 +20,7 @@ public class StructuredBufferCalculator : Calculator
 
     protected override string GetPath()
     {
-        return "StructuredBuffer";
+        return "StructuredBuffer/Usual";
     }
 
     protected override void DoComputation(ComputeShader cs)
