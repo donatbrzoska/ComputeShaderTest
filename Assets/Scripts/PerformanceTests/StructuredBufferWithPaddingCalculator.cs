@@ -27,7 +27,7 @@ public class StructuredBufferWithPaddingCalculator : Calculator
 
     protected override string GetPath()
     {
-        return "StructuredBuffer/NoPadding";
+        return "StructuredBuffer/WithPadding";
     }
 
     protected override void DoComputation(ComputeShader cs)

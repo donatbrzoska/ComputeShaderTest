@@ -47,7 +47,7 @@ public class PerformanceTestEngine : MonoBehaviour
                     Calculator = new StructuredBufferNoPaddingCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
                     break;
                 case TestMode.StructuredBufferWithPadding:
-                    Calculator = new StructuredBufferNoPaddingCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                    Calculator = new StructuredBufferWithPaddingCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
                     break;
                 case TestMode.Texture2D:
                     Calculator = new Texture2DCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
