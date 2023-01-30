@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class TripleTexture2DCalculator : Calculator
+public class Texture2DSeparateResultCalculator : Calculator
 {
     private RenderTexture Texture1;
     private RenderTexture Texture2;
@@ -11,7 +11,7 @@ public class TripleTexture2DCalculator : Calculator
     private RenderTexture Texture;
 
     // Use a third texture as result, so we only have one SetTexture call -> seems to not make a difference though
-    public TripleTexture2DCalculator(int textureSize, int threadsX, int threadsY, Renderer renderer)
+    public Texture2DSeparateResultCalculator(int textureSize, int threadsX, int threadsY, Renderer renderer)
         : base(textureSize, threadsX, threadsY, renderer)
     {
         Texture1 = CreateTexture(textureSize);
@@ -26,7 +26,7 @@ public class TripleTexture2DCalculator : Calculator
 
     protected override string GetPath()
     {
-        return "TripleTexture2D";
+        return "Texture2DSeparateResult";
     }
 
     protected override void DoComputation(ComputeShader cs)
