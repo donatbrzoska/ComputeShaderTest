@@ -22,6 +22,8 @@ public class SequentialTest : MonoBehaviour
     void Update()
     {
         ComputeBuffer = new ComputeBuffer(TEXTURE_SIZE * TEXTURE_SIZE, sizeof(float));
+        float[] data = new float[TEXTURE_SIZE * TEXTURE_SIZE];
+        ComputeBuffer.SetData(data);
 
         // run sequential computation
         for (int i = 0; i < ITERATIONS; i++)
@@ -38,8 +40,7 @@ public class SequentialTest : MonoBehaviour
         }
 
         // retrieve result data
-        float[] result = new float[TEXTURE_SIZE * TEXTURE_SIZE];
-        ComputeBuffer.GetData(result);
+        ComputeBuffer.GetData(data);
 
         // dispose buffer
         ComputeBuffer.Dispose();
@@ -50,7 +51,7 @@ public class SequentialTest : MonoBehaviour
         {
             for (int j = 0; j < TEXTURE_SIZE; j++)
             {
-                if (result[i * TEXTURE_SIZE + j] != result[0])
+                if (data[i * TEXTURE_SIZE + j] != data[0])
                 {
                     success = false;
                 }
@@ -58,6 +59,6 @@ public class SequentialTest : MonoBehaviour
         }
 
         Debug.Log("Success: " + success);
-        Debug.Log("Result: " + result[0]);
+        Debug.Log("Result: " + data[0]);
     }
 }
