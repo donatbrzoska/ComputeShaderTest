@@ -10,6 +10,7 @@ public class SequentialTest : MonoBehaviour
     public int THREADS_X = 8;
     public int THREADS_Y = 1;
     public int ITERATIONS = 100;
+    public bool INSTANT_FLUSH = false;
 
     ComputeBuffer ComputeBuffer;
 
@@ -32,11 +33,15 @@ public class SequentialTest : MonoBehaviour
             first.SetBuffer(0, "Buf", ComputeBuffer);
             first.SetInt("Width", TEXTURE_SIZE);
             first.Dispatch(0, TEXTURE_SIZE / THREADS_X, TEXTURE_SIZE / THREADS_Y, 1);
+            if (INSTANT_FLUSH)
+                GL.Flush();
 
             ComputeShader second = (ComputeShader)Resources.Load("SequentialTest/Second");
             second.SetBuffer(0, "Buf", ComputeBuffer);
             second.SetInt("Width", TEXTURE_SIZE);
             second.Dispatch(0, TEXTURE_SIZE / THREADS_X, TEXTURE_SIZE / THREADS_Y, 1);
+            if (INSTANT_FLUSH)
+                GL.Flush();
         }
 
         // retrieve result data
