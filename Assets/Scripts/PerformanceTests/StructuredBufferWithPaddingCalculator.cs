@@ -5,9 +5,8 @@ public class StructuredBufferWithPaddingCalculator : Calculator
 {
     private struct ColorInfo
     {
-        public Color Rg;
-        public float B;
-        public Vector3 pad;
+        public Vector3 Rgb;
+        public float pad;
     }
 
     private RenderTexture Texture;
@@ -20,7 +19,7 @@ public class StructuredBufferWithPaddingCalculator : Calculator
 
         Renderer.material.SetTexture("_MainTex", Texture);
 
-        ColorInfoBuffer = new ComputeBuffer(textureSize * textureSize, 4 * sizeof(float) + 1 * sizeof(float) + 3 * sizeof(float));
+        ColorInfoBuffer = new ComputeBuffer(textureSize * textureSize, 4 * sizeof(float));
         ColorInfo[] initial = new ColorInfo[textureSize * textureSize];
         ColorInfoBuffer.SetData(initial);
     }

@@ -4,8 +4,7 @@ float Stepsize;
 uint CanvasWidth;
 
 struct ColorInfo {
-    float4 rg;
-    float b;
+    float3 rgb;
 };
 
 RWStructuredBuffer<ColorInfo> Colors;
@@ -15,14 +14,13 @@ RWTexture2D<float4> OutputTexture;
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     ColorInfo source = Colors[id.y * CanvasWidth + id.x];
-    float r = source.rg.x + Stepsize;
-    float g = source.rg.y + Stepsize;
-    float b = source.b + Stepsize;
+    float r = source.rgb.x + Stepsize;
+    float g = source.rgb.y + Stepsize;
+    float b = source.rgb.z + Stepsize;
     float4 new_col = float4(r, g, b, 1);
 
     ColorInfo updated;
-    updated.rg = float4(r, g, 0, 1);
-    updated.b = b;
+    updated.rgb = float3(r, g, b);
     Colors[id.y * CanvasWidth + id.x] = updated;
 
     OutputTexture[id.xy] = new_col;
