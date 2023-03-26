@@ -5,7 +5,8 @@ public enum TestMode
     Empty,
     Texture2D,
     Texture2DSeparateResult,
-    Texture2DSplitSeparateResult,
+    Texture2DSplit2SeparateResult,
+    Texture2DSplit3SeparateResult,
     StructuredBuffer,
     StructuredBufferNoPadding,
     StructuredBufferWithPadding,
@@ -56,8 +57,11 @@ public class PerformanceTestEngine : MonoBehaviour
                 case TestMode.Texture2DSeparateResult:
                     Calculator = new Texture2DSeparateResultCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
                     break;
-                case TestMode.Texture2DSplitSeparateResult:
-                    Calculator = new Texture2DSplitSeparateResultCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                case TestMode.Texture2DSplit2SeparateResult:
+                    Calculator = new Texture2DSplit2SeparateResultCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                    break;
+                case TestMode.Texture2DSplit3SeparateResult:
+                    Calculator = new Texture2DSplit3SeparateResultCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
                     break;
                 case TestMode.Empty:
                     break;
