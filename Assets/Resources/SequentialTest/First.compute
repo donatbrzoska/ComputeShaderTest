@@ -3,7 +3,7 @@
 RWStructuredBuffer<float> Buf;
 uint Width;
 
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     Buf[Width * id.y + id.x] += 1;

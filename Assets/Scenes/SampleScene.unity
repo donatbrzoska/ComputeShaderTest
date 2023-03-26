@@ -1303,7 +1303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TEXTURE_SIZE: 2048
-  THREADS_X: 8
+  THREADS_X: 32
   THREADS_Y: 1
 --- !u!114 &1159589203
 MonoBehaviour:
@@ -1318,7 +1318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TEXTURE_SIZE: 2048
-  THREADS_X: 8
+  THREADS_X: 32
   THREADS_Y: 1
   ITERATIONS: 100
   INSTANT_FLUSH: 0

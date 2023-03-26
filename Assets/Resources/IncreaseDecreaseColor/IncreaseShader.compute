@@ -9,7 +9,7 @@ uint canvas_height;
 RWStructuredBuffer<float4> Colors;
 RWStructuredBuffer<int> DebugValue;
 
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     float4 source = Colors[id.y * canvas_width + id.x];

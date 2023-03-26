@@ -9,7 +9,7 @@ uint XY(uint x, uint y, uint width)
     return y * width + x;
 }
 
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     if (id.x < Dimensions-1 && id.x > 0 && id.y < Dimensions-1 && id.y > 0) { // skip borders for simplicity

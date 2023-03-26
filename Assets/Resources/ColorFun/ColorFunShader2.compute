@@ -14,7 +14,7 @@ uint canvas_height;
 uint mouse_x;
 uint mouse_y;
 
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void main (uint3 id : SV_DispatchThreadID)
 {
 /*

@@ -8,7 +8,7 @@ RWTexture2D<float4> OutputTexture1;
 RWTexture2D<float4> OutputTexture2;
 RWTexture2D<float4> Result;
 
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     float4 source_rg = InputTexture1[id.xy];

@@ -12,7 +12,7 @@ RWBuffer<float> Colors_b;
 RWBuffer<float> Colors_a;
 RWStructuredBuffer<int> DebugValue;
 
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
     float4 source = float4(

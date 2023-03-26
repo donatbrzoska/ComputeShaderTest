@@ -19,7 +19,7 @@ struct MousePosition
 
 RWStructuredBuffer<MousePosition> mouse_position;
 
-[numthreads(8,1,1)]
+[numthreads(32,1,1)]
 void main (uint3 id : SV_DispatchThreadID)
 {
 /*
