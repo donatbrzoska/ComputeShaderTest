@@ -1,0 +1,31 @@
+#pragma kernel CSMain
+
+float Stepsize;
+uint CanvasWidth;
+
+struct ColorSplit3 {
+    float4 r;
+    float4 g;
+    float4 b;
+};
+
+RWStructuredBuffer<ColorSplit3> Colors;
+RWTexture2D<float4> OutputTexture;
+
+[numthreads(32,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    ColorSplit3 source = Colors[id.y * CanvasWidth + id.x];
+    float r = source.r.x + Stepsize;
+    float g = source.g.x + Stepsize;
+    float b = source.b.x + Stepsize;
+
+    ColorSplit3 new_struct;
+    new_struct.r = float4(r, 0, 0, 0);
+    new_struct.g = float4(g, 0, 0, 0);
+    new_struct.b = float4(b, 0, 0, 0);
+    float4 new_col = float4(r, g, b, 1);
+
+    Colors[id.y * CanvasWidth + id.x] = new_struct;
+    OutputTexture[id.xy] = new_col;
+}

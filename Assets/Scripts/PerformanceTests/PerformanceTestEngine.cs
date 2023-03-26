@@ -8,6 +8,8 @@ public enum TestMode
     Texture2DSplit2SeparateResult,
     Texture2DSplit3SeparateResult,
     StructuredBuffer,
+    StructuredBufferSplit2,
+    StructuredBufferSplit3,
     StructuredBufferNoPadding,
     StructuredBufferWithPadding,
 }
@@ -44,6 +46,12 @@ public class PerformanceTestEngine : MonoBehaviour
             {
                 case TestMode.StructuredBuffer:
                     Calculator = new StructuredBufferCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                    break;
+                case TestMode.StructuredBufferSplit2:
+                    Calculator = new StructuredBufferSplit2Calculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
+                    break;
+                case TestMode.StructuredBufferSplit3:
+                    Calculator = new StructuredBufferSplit3Calculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
                     break;
                 case TestMode.StructuredBufferNoPadding:
                     Calculator = new StructuredBufferNoPaddingCalculator(TEXTURE_SIZE, THREADS_X, THREADS_Y, Renderer);
