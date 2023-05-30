@@ -1113,6 +1113,7 @@ GameObject:
   - component: {fileID: 1159589201}
   - component: {fileID: 1159589202}
   - component: {fileID: 1159589203}
+  - component: {fileID: 1159589204}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1297,7 +1298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159589192}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 839f5179148e24a7b9b19222ca525647, type: 3}
   m_Name: 
@@ -1322,6 +1323,21 @@ MonoBehaviour:
   THREADS_Y: 1
   ITERATIONS: 100
   INSTANT_FLUSH: 0
+--- !u!114 &1159589204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159589192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7884f2041014de2987118333351813, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CANVAS_HEIGHT: 1000
+  CANVAS_WIDTH: 1500
+  PAINT_SIZE: 4
 --- !u!1 &1426568275
 GameObject:
   m_ObjectHideFlags: 0
