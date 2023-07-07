@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159589192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0dae5b0c9e08d4423912a3447bd095ac, type: 3}
   m_Name: 
@@ -1298,12 +1298,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159589192}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 839f5179148e24a7b9b19222ca525647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TEXTURE_SIZE: 2048
+  TEXTURE_SIZE: 4096
   THREADS_X: 32
   THREADS_Y: 1
 --- !u!114 &1159589203
@@ -1330,7 +1330,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159589192}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de7884f2041014de2987118333351813, type: 3}
   m_Name: 

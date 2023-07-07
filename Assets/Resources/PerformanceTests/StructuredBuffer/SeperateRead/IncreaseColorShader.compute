@@ -1,0 +1,19 @@
+#pragma kernel CSMain
+
+float Stepsize;
+uint CanvasWidth;
+
+RWStructuredBuffer<float4> Colors;
+RWTexture2D<float4> OutputTexture;
+
+[numthreads(32,1,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    float r = Colors[id.y * CanvasWidth + id.x].x + Stepsize;
+    float g = Colors[id.y * CanvasWidth + id.x].y + Stepsize;
+    float b = Colors[id.y * CanvasWidth + id.x].z + Stepsize;
+    float4 new_col = float4(r, g, b, 1);
+
+    Colors[id.y * CanvasWidth + id.x] = new_col;
+    OutputTexture[id.xy] = new_col;
+}
